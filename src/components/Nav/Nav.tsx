@@ -171,7 +171,7 @@ const Nav = () => {
               <MenuIcon />
             </IconButton>
             <Typography variant="h6" noWrap>
-              3omb
+              MERCURY
             </Typography>
 
             <Drawer
@@ -192,29 +192,29 @@ const Nav = () => {
               </div>
               <Divider />
               <List>
-                <ListItemLink primary="Home" to="/" />
-                <ListItemLink primary="3Farms" to="/farms" />
-                <ListItemLink primary="3Room" to="/boardroom" />
-                <ListItemLink primary="3Bonds" to="/bonds" />
-                <ListItemLink primary="3DAO" to="/rebates" />
+                <ListItemLink primary="HOME" to="/" />
+                <ListItemLink primary="FARMS" to="/farms" />
+                <ListItemLink primary="BOARDROOM" to="/boardroom" />
+                <ListItemLink primary="BOND" to="/bonds" />
+                {/* <ListItemLink primary="3DAO" to="/rebates" />
                 <ListItemLink primary="Treasury" to="/treasury" />
-                {/* <ListItemLink primary="Masonry" to="/masonry" />
+                <ListItemLink primary="Masonry" to="/masonry" />
                 <ListItemLink primary="Pit" to="/pit" />
                 <ListItemLink primary="SBS" to="/sbs" />
                 <ListItemLink primary="Liquidity" to="/liquidity" />
-                <ListItemLink primary="Regulations" to="/regulations" /> */}
+                <ListItemLink primary="Regulations" to="/regulations" />
                 <ListItem button component="a" href="https://beluga.fi">
                   <ListItemText>Vaults</ListItemText>
-                </ListItem>
+                </ListItem> */}
                 {/* <ListItem button component="a" href="https://snapshot.org/#/forgiving.forg.eth">
                   <ListItemText>Governance</ListItemText>
                 </ListItem> */}
-                <ListItem button component="a" href="https://gedeon-crypto.gitbook.io/3omb.finance/">
-                  <ListItemText>Docs</ListItemText>
+                <ListItem button component="a" href="https://mercury-finance777.gitbook.io/mercury-finance/">
+                  <ListItemText>DOCS</ListItemText>
                 </ListItem>
-                <ListItem button component="a" href="https://2omb.finance">
+                {/* <ListItem button component="a" href="https://2omb.finance">
                   <ListItemText>2omb</ListItemText>
-                </ListItem>
+                </ListItem> */}
                 <ListItem style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                   <AccountButton text="Connect" onOpen={handleDrawerClose} />
                 </ListItem>
