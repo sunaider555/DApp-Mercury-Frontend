@@ -1,7 +1,6 @@
-# 3omb Interface
+# Mercury Interface
 
-Thanks for taking the time to contribute!
-You can start by reading our [Contribution guidelines](CONTRIBUTING.md) first.
+You can see at http://mercuryfinance.io/.
 
 ## Setup
 
@@ -30,7 +29,3 @@ npx prettier --write .
 - **hooks** contains generic hooks.
 - **utils** contains generic utilities functions.
 
-## Author
-- If you have any questions, please feel free to ask me. 
-skype: 
-gmail: sunaider555@gmail.com
