@@ -51,10 +51,10 @@ const Cemetery = () => {
               <Box mt={5}>
                 <div hidden={activeBanks.filter((bank) => bank.sectionInUI === 2).length === 0}>
                   <Typography color="textPrimary" variant="h4" gutterBottom >
-                    Earn XSHARE by staking LP_BB
+                    Earn XSHARE by staking LP
                   </Typography>
                   <Alert variant="filled" severity="warning" style={{  backgroundColor: 'purple', color: 'white !important' }}>
-                   People can live now.
+                   Not open yet.
                   </Alert>
                   <Grid container spacing={3}  style={{ marginTop: '20px' }}>
                     {activeBanks
@@ -72,7 +72,7 @@ const Cemetery = () => {
                     Genesis Pools
                   </Typography>
                   <Alert variant="filled" severity="warning" style={{  backgroundColor: 'purple', color: 'white !important' }}>
-                    All below pools have ended. Please unstake and collect your rewards.
+                  Pools are subject to a 1% deposit fee.
                   </Alert>
                   <Grid container spacing={3} style={{ marginTop: '20px' }}>
                     {activeBanks

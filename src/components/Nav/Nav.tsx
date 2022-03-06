@@ -106,7 +106,7 @@ const Nav = () => {
               {/* <a className={ classes.brandLink } href="/">2omb Finance</a> */}
               <Link to="/" color="inherit" className={classes.brandLink} >
               {/* style={{width:'300px', backgroundImage: `url(${logoImg})` }} */}
-              <Image className="ombImg-home" color="none" style={{ width:  window.innerHeight * 0.5 +'px', height:  window.innerHeight * 0.4 * 429/1077 + 'px', paddingTop: '0px' }} src={logoImg} />
+              <Image className="ombImg-home" color="none" style={{ width:  window.innerHeight * 0.4 +'px', height:  window.innerHeight * 0.32 * 429/1077 + 'px', paddingTop: '0px' }} src={logoImg} />
        
               </Link>
             </Typography>
@@ -150,7 +150,7 @@ const Nav = () => {
               {/* <a href="https://snapshot.org/#/forgiving.forg.eth" target="_blank" className={classes.link}>
                 Governance
               </a> */}
-              <a href="https://gedeon-crypto.gitbook.io/3omb.finance/" target="_blank" className={classes.link}>
+              <a href="https://mercury-finance777.gitbook.io/mercury-finance/" target="_blank" className={classes.link}>
                 DOCS
               </a>
               {/* <a href="https://2omb.finance" target="_blank" className={classes.link}>

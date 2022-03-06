@@ -176,7 +176,7 @@ const Home = () => {
         <Grid container justify="center">
             <Box mt={3} style={{ width: 'inherit', padding: '10px'}}>
             <Alert variant="filled" severity="warning" style={{  backgroundColor: 'purple', color: 'white !important' }}>
-              <b style={{ color: 'white' }}>Please visit our <StyledLink target="_blank" href="https://docs.mercury.finance" style = {{color:'black'}}>documentation</StyledLink> before purchasing MERCURY or TSHARE!</b>
+              <b style={{ color: 'white' }}>Please visit our <StyledLink target="_blank" href="https://docs.mercury.finance" style = {{color:'black'}}>documentation</StyledLink> before purchasing MERCURY or XSHARE!</b>
             </Alert>
             </Box>
         </Grid>
@@ -393,7 +393,7 @@ const Home = () => {
               </Box>*/}
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} 3OMB /{' '}
+                  {tombLPStats?.tokenAmount ? tombLPStats?.tokenAmount : '-.--'} MERCURY /{' '}
                   {tombLPStats?.ftmAmount ? tombLPStats?.ftmAmount : '-.--'} FTM
                 </span>
               </Box>
@@ -408,7 +408,7 @@ const Home = () => {
         <Grid item xs={12} sm={6}>
           <Card class="override" style={{ backgroundColor: "black", color: "white", boxShadow: "none", border: "1px solid var(--black)" }}>
             <CardContent align="center">
-              <h2>XSHARES-FTM Spooky LP</h2>
+              <h2>XSHARE-FTM Spooky LP</h2>
               <Box mt={2}>
                 <CardIcon>
                   <TokenSymbol symbol="XSHARE_FTM" />
@@ -421,7 +421,7 @@ const Home = () => {
             </Box>*/}
               <Box mt={2}>
                 <span style={{ fontSize: '26px' }}>
-                  {tshareFTM_LPStats?.tokenAmount ? tshareFTM_LPStats?.tokenAmount : '-.--'} 3SHARE /{' '}
+                  {tshareFTM_LPStats?.tokenAmount ? tshareFTM_LPStats?.tokenAmount : '-.--'} XSHARE /{' '}
                   {tshareFTM_LPStats?.ftmAmount ? tshareFTM_LPStats?.ftmAmount : '-.--'} FTM
                 </span>
               </Box>

@@ -24,7 +24,7 @@ import TwoombLPLogo from '../../assets/img/2OMB-WFTM.png';
 import TwosharesLPLogo from '../../assets/img/2SHARES-WFTM.png';
 import TwoombTwosharesLPLogo from '../../assets/img/2OMB-2SHARES.png';
 
-import UsdcLogo from '../../assets/img/USDC.png';
+import usdcLogo from '../../assets/img/USDC.png';
 
 import ThreeombLPLogo from '../../assets/img/3OMB-WFTM.png';
 import ThreesharesLPLogo from '../../assets/img/3SHARES-WFTM.png';
@@ -45,24 +45,26 @@ const logosBySymbol: { [title: string]: string } = {
   TSHAREPNG: tShareLogoPNG,
   TSHARE: tShareLogo,
   TBOND: tBondLogo,
-  // WFTM: wftmLogo,
+
   BOO: booLogo,
   SHIBA: shibaLogo,
   ZOO: zooLogo,
   BELUGA: belugaLogo,
   BIFI: bifiLogo,
   MIM: mimLogo,
-  // USDC: UsdcLogo,
+ 
   BLOOM: bloomLogo,
   MERCURY: mercuryLogo, //bb...
+  'MERCURY-FTM LP': mercuryLogo,
   XSHARE: xshareLogo,
+  'XSHARE-FTM LP': xshareLogo,
   XBOND: xbondLogo,
   MERCURY_FTM: mercury_ftmLogo,   
   XSHARE_FTM: xshare_ftmLogo,
   'MERCURY-WFTM-LP': mercury_ftmLogo,
   'XSHARE-FTM-LP': xshare_ftmLogo,
-  'WFTM': xbondLogo,
-  'USDC': xbondLogo,
+  'WFTM': wftmLogo,
+  'USDC': usdcLogo,
   '2OMB': xbondLogo,
   'ETH' : xbondLogo,
 

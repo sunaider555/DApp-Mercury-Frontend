@@ -29,7 +29,7 @@ const CemeteryCard = ({ bank }) => {
             <Typography variant="h5" component="h2">
               {bank.depositTokenName}
             </Typography>
-            <Typography color="textSecondary">
+            <Typography style={{color: 'white'}}>
               {/* {bank.name} */}
               Deposit {bank.depositTokenName.toUpperCase()} Earn {` ${bank.earnTokenName}`}
             </Typography>

@@ -219,7 +219,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sectionInUI: 2,
     contract: 'TombFtmLPTShareRewardPool',
     depositTokenName: 'MERCURY-FTM LP',   //bb
-    earnTokenName: 'MERCURY-FTM LP',   //I think this should be changed later.
+    earnTokenName: 'XSHARE',   //I think this should be changed later.
     finished: false,
     multiplier: '35500x',
     buyLink: 'https://spookyswap.finance/add/FTM/0x14DEf7584A6c52f470Ca4F4b9671056b22f4FfDE',
@@ -247,7 +247,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sectionInUI: 22,
     contract: 'TwoshareFtmLPTShareRewardPool',
     depositTokenName: 'WFTM',
-    earnTokenName: '3SHARES',
+    earnTokenName: 'MERCURY',
     finished: false,
     multiplier: '15000x',
     buyLink: 'https://spookyswap.finance/add/FTM/0xc54A1684fD1bef1f077a336E6be4Bd9a3096a6Ca',
@@ -261,7 +261,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
     sectionInUI: 22,
     contract: 'TwoombFtmLPTShareRewardPool',
     depositTokenName: 'USDC',
-    earnTokenName: '3SHARES',
+    earnTokenName: 'MERCURY',
     finished: false,
     multiplier: '35500x',
     buyLink: 'https://spookyswap.finance/add/FTM/0x7a6e4e3cc2ac9924605dca4ba31d1831c84b44ae',
@@ -272,7 +272,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   ThreeombThreesharesLPTShareRewardPool: { // new
     name: 'Earn 3SHARES by 3OMB-3SHARES LP',
     poolId: 4,
-    sectionInUI: 22,
+    sectionInUI: 222,
     contract: 'ThreeombThreesharesLPTShareRewardPool',
     depositTokenName: '2OMB',
     earnTokenName: '3SHARES',
@@ -286,7 +286,7 @@ export const bankDefinitions: { [contractName: string]: BankInfo } = {
   TwoombTombLPTShareRewardPool: { // new
     name: 'Earn 3SHARES by 2OMB-TOMB LP',
     poolId: 7,
-    sectionInUI: 22,
+    sectionInUI: 222,
     contract: 'TwoombTombLPTShareRewardPool',
     depositTokenName: 'ETH',
     earnTokenName: '3SHARES',
