@@ -98,7 +98,7 @@ const Nav = () => {
   };
 
   return (
-    <AppBar position="static" elevation={0} className={classes.appBar}>
+    <AppBar position="sticky" elevation={0} className={classes.appBar}>
       <Toolbar className={classes.toolbar}>
         {matches ? (
           <>
@@ -161,6 +161,7 @@ const Nav = () => {
           </>
         ) : (
           <>
+               
             <IconButton
               color="inherit"
               aria-label="open drawer"
@@ -170,10 +171,12 @@ const Nav = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap>
-              MERCURY
-            </Typography>
-
+            <img  src={logoImg} style={{width: '50% '}} />
+            {/* <Typography variant="h6" color="inherit"  className={classes.toolbarTitle}>
+              
+            </Typography> */}
+            
+       
             <Drawer
               className={classes.drawer}
               onEscapeKeyDown={handleDrawerClose}

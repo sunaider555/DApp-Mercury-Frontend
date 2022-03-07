@@ -208,16 +208,16 @@ const Home = () => {
               {/* <Button color="primary" href="/farms" variant="contained" style={{ marginRight: '10px' }}>
                 Farms
               </Button> */}
-              <Button  href="/boardroom" variant="outlined" style={{marginRight: "10px", backgroundColor: "#8000ff"}}>
+              <Button  href="/boardroom"  className={classes.button} variant="outlined" style={{marginRight: "10px", backgroundColor: "#8000ff"}}>
                 STAKE NOW
               </Button>
-              <Button color="primary" href="/masonry" variant="outlined" style={{ marginRight: '10px', backgroundColor: 'white', color: 'black' }}>
+              <Button   href="/masonry" className={classes.button} variant="outlined" style={{ marginRight: '10px', backgroundColor: 'white', color: 'black' }}>
                 FARM Now
               </Button>
-              <Button href="/cemetery" variant="outlined" style={{ marginRight: '10px', backgroundColor:'#8000ff' }}>
+              <Button href="/cemetery"  className={classes.button} variant="outlined" style={{ marginRight: '10px', backgroundColor:'#8000ff' }}>
                 BUY MERCURY
               </Button>
-              <Button href="/cemetery" variant="outlined" style={{ marginRight: '10px' , backgroundColor: 'white', color: 'black'}}>
+              <Button href="/cemetery"  className={classes.button} variant="outlined" style={{ marginRight: '10px' , backgroundColor: 'white', color: 'black'}}>
                 BUY XSHARE
               </Button>
               {/* <Button target="_blank" href="https://spookyswap.finance/swap?outputCurrency=0x14def7584a6c52f470ca4f4b9671056b22f4ffde"

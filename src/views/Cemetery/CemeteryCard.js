@@ -26,7 +26,7 @@ const CemeteryCard = ({ bank }) => {
             >
               <TokenSymbol size={32} symbol={bank.depositTokenName} />
             </Box>
-            <Typography variant="h5" component="h2">
+            <Typography variant="h5" component="h2" style={{color: 'white'}}>
               {bank.depositTokenName}
             </Typography>
             <Typography style={{color: 'white'}}>

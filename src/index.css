@@ -16,7 +16,7 @@ h2,
 h3,
 h4 {
     margin: 0;
-    font-family: 'Gilroy', sans-serif !important;
+    /* font-family: 'Gilroy', sans-serif; */
     /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif; */
@@ -75,14 +75,14 @@ body {
     width: 100%;
 }
 
-h1,
+/* h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
     font-family: 'Gilroy' !important;
-}
+} */
 
 footer .a:hover {
     fill: '#DA4567';
@@ -102,13 +102,13 @@ footer .a:hover {
   background-color: var(--accent) !important;
 }
 
-code {
+/* code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
-}
+} */
 
 .wallet-button {
     color: #2c2560 !important;
-    font-family: 'Gilroy', sans-serif !important;
+    /* font-family: 'Gilroy', sans-serif !important; */
     font-size: 1.1rem !important;
     text-align: left !important;
     justify-content: flex-start !important;

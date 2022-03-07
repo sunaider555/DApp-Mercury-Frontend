@@ -9,8 +9,8 @@ import Nav from '../Nav';
 const Page: React.FC = ({ children }) => {
   useEagerConnect();
   return (
-    <div style={{ position: 'relative', minHeight: '100vh', backgroundColor: `#260d0d`, backgroundImage:`url('/img/pixta.jpg') `,backgroundRepeat: 'no-repeat',backgroundSize: 'cover' }} >
-
+    <div style={{ position: 'relative', minHeight: '100vh'}} >
+ {/* backgroundImage:`url('/img/pixta.jpg') `,backgroundRepeat: 'no-repeat',backgroundSize: 'cover'  */}
       <Nav />
       <Container maxWidth="lg" style={{ paddingBottom: '5rem' }}>
         {children}

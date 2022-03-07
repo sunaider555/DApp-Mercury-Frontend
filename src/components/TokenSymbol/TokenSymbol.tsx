@@ -36,7 +36,7 @@ import mercuryLogo from '../../assets/img/mercury.png';
 import xshareLogo from '../../assets/img/xshare.png';
 import xbondLogo from '../../assets/img/xbond.png';
 import mercury_ftmLogo from '../../assets/img/mercury.png';
-import xshare_ftmLogo from '../../assets/img/mercury.png';
+import xshare_ftmLogo from '../../assets/img/xshare.png';
 const logosBySymbol: { [title: string]: string } = {
   //Real tokens
   //=====================
