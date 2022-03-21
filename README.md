@@ -1,6 +1,6 @@
 # Mercury Interface
 
-You can see this website at http://mercuryfinance.io/.
+
 
 ## Setup
 
