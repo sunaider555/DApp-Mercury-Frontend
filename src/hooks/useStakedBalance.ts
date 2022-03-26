@@ -9,7 +9,7 @@ const useStakedBalance = (poolName: ContractName, poolId: Number) => {
   const [balance, setBalance] = useState(BigNumber.from(0));
   const tombFinance = useTombFinance();
   const isUnlocked = tombFinance?.isUnlocked;
-
+ console.log("bb_poolname: ", poolName, "poolID: ", poolId, "myAccount: ", tombFinance.myAccount);
   const fetchBalance = useCallback(async () => {
     const balance = await tombFinance.stakedBalanceOnBank(poolName, poolId, tombFinance.myAccount);
     setBalance(balance);

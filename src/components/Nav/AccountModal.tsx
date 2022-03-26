@@ -9,6 +9,10 @@ import ModalTitle from '../ModalTitle';
 import useTombFinance from '../../hooks/useTombFinance';
 import TokenSymbol from '../TokenSymbol';
 
+// import {useMediaQuery} from '@material-ui/core';
+
+// const matches = useMediaQuery('(min-width:900px)');
+
 const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const tombFinance = useTombFinance();
 
@@ -23,30 +27,30 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
 
   return (
     <Modal>
-      <ModalTitle text="My Wallet" />
+      <ModalTitle text="My Wallet"/>
 
-      <Balances>
-        <StyledBalanceWrapper>
-          <TokenSymbol symbol="TOMB" />
+      <Balances >
+        <StyledBalanceWrapper style = {{paddingBottom: '15px'}} >
+          <TokenSymbol symbol="MERCURY" />
           <StyledBalance>
             <StyledValue>{displayTombBalance}</StyledValue>
-            <Label text="3OMB Available" variant="primary" />
+            <Label text="MERCURY Available" variant="primary" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
-        <StyledBalanceWrapper>
-          <TokenSymbol symbol="TSHARE" />
+        <StyledBalanceWrapper style = {{paddingBottom: '15px'}}>
+          <TokenSymbol symbol="XSHARE" />
           <StyledBalance>
             <StyledValue>{displayTshareBalance}</StyledValue>
-            <Label text="3SHARE Available" variant="primary" />
+            <Label text="XSHARE Available" variant="primary" />
           </StyledBalance>
         </StyledBalanceWrapper>
 
-        <StyledBalanceWrapper>
-          <TokenSymbol symbol="TBOND" />
+        <StyledBalanceWrapper style = {{paddingBottom: '15px'}}>
+          <TokenSymbol symbol="XBOND" />
           <StyledBalance>
             <StyledValue>{displayTbondBalance}</StyledValue>
-            <Label text="3BOND Available" variant="primary" />
+            <Label text="XBOND Available" variant="primary" />
           </StyledBalance>
         </StyledBalanceWrapper>
       </Balances>

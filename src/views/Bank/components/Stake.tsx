@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Button, Card, CardContent } from '@material-ui/core';
 // import Card from '../../../components/Card';
 // import CardContent from '../../../components/CardContent';
+
+
 import CardIcon from '../../../components/CardIcon';
 import { AddIcon, RemoveIcon } from '../../../components/icons';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
@@ -31,118 +33,115 @@ import TokenSymbol from '../../../components/TokenSymbol';
 import { Bank } from '../../../tomb-finance';
 
 interface StakeProps {
-  bank: Bank;
+    bank: Bank;
 }
 
 const Stake: React.FC<StakeProps> = ({ bank }) => {
-  const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
+    const [approveStatus, approve] = useApprove(bank.depositToken, bank.address);
 
-  const { color: themeColor } = useContext(ThemeContext);
-  const tokenBalance = useTokenBalance(bank.depositToken);
-  const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
-  const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
-  const tokenPriceInDollars = useMemo(
-    () => (stakedTokenPriceInDollars ? stakedTokenPriceInDollars : null),
-    [stakedTokenPriceInDollars],
-  );
-  const earnedInDollars = (
-    Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
-  ).toFixed(2);
-  const { onStake } = useStake(bank);
-  const { onZap } = useZap(bank);
-  const { onWithdraw } = useWithdraw(bank);
+    const { color: themeColor } = useContext(ThemeContext);
+    const tokenBalance = useTokenBalance(bank.depositToken);
+    const stakedBalance = useStakedBalance(bank.contract, bank.poolId);
+    const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank.depositTokenName, bank.depositToken);
+    const tokenPriceInDollars = useMemo(
+        () => (stakedTokenPriceInDollars ? stakedTokenPriceInDollars : null),
+        [stakedTokenPriceInDollars],
+    );
+    const earnedInDollars = (
+        Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank.depositToken.decimal))
+    ).toFixed(2);
+    const { onStake } = useStake(bank);
+    const { onZap } = useZap(bank);
+    const { onWithdraw } = useWithdraw(bank);
 
-  const [onPresentDeposit, onDismissDeposit] = useModal(
-    <DepositModal
-      max={tokenBalance}
-      decimals={bank.depositToken.decimal}
-      onConfirm={(amount) => {
-        if (Number(amount) <= 0 || isNaN(Number(amount))) return;
-        onStake(amount);
-        onDismissDeposit();
-      }}
-      tokenName={bank.depositTokenName}
-    />,
-  );
+    const [onPresentDeposit, onDismissDeposit] = useModal(
+        <DepositModal
+            max={tokenBalance}
+            decimals={bank.depositToken.decimal}
+            onConfirm={(amount) => {
+                if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+                onStake(amount);
+                onDismissDeposit();
+            }}
+            tokenName={bank.depositTokenName}
+        />,
+    );
 
-  // const [onPresentZap, onDissmissZap] = useModal(
-  //   <ZapModal
-  //     decimals={bank.depositToken.decimal}
-  //     onConfirm={(zappingToken, tokenName, amount) => {
-  //       if (Number(amount) <= 0 || isNaN(Number(amount))) return;
-  //       onZap(zappingToken, tokenName, amount);
-  //       onDissmissZap();
-  //     }}
-  //     tokenName={bank.depositTokenName}
-  //   />,
-  // );
+    const [onPresentZap, onDissmissZap] = useModal(
+        <ZapModal
+            decimals={bank.depositToken.decimal}
+            onConfirm={(zappingToken, tokenName, amount) => {
+                if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+                onZap(zappingToken, tokenName, amount);
+                onDissmissZap();
+            }}
+            tokenName={bank.depositTokenName}
+        />,
+    );
 
-  const [onPresentWithdraw, onDismissWithdraw] = useModal(
-    <WithdrawModal
-      max={stakedBalance}
-      decimals={bank.depositToken.decimal}
-      onConfirm={(amount) => {
-        if (Number(amount) <= 0 || isNaN(Number(amount))) return;
-        onWithdraw(amount);
-        onDismissWithdraw();
-      }}
-      tokenName={bank.depositTokenName}
-    />,
-  );
+    const [onPresentWithdraw, onDismissWithdraw] = useModal(
+        <WithdrawModal
+            max={stakedBalance}
+            decimals={bank.depositToken.decimal}
+            onConfirm={(amount) => {
+                if (Number(amount) <= 0 || isNaN(Number(amount))) return;
+                onWithdraw(amount);
+                onDismissWithdraw();
+            }}
+            tokenName={bank.depositTokenName}
+        />,
+    );
 
-  return (
-    <Card style={{ color: 'white', boxShadow: 'none !important'}}>
-      <CardContent>
-        <StyledCardContentInner>
-          <StyledCardHeader>
-            <CardIcon>
-              <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
-            </CardIcon>
-            <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
-            <Label text={`≈ $${earnedInDollars}`} />
-            <Label text={`${bank.depositTokenName} Staked`} />
-          </StyledCardHeader>
-          <StyledCardActions>
-            {approveStatus !== ApprovalState.APPROVED ? (
-              <Button
-                disabled={
-                  bank.closedForStaking ||
-                  approveStatus === ApprovalState.PENDING ||
-                  approveStatus === ApprovalState.UNKNOWN
-                }
-                onClick={approve}
-                color="primary"
-                variant="outlined"
-                style={{ backgroundColor: '#8000ff', color: 'white',marginTop: '20px' }}
-              >
-                {`Approve ${bank.depositTokenName}`}
-              </Button>
-            ) : (
-              <>
-                <IconButton onClick={onPresentWithdraw}>
-                  <RemoveIcon />
-                </IconButton>
-                <StyledActionSpacer />
-                {/* <IconButton
-                  disabled={bank.closedForStaking || bank.depositTokenName === 'TOMB-FTM-LP'}
-                  onClick={() => (bank.closedForStaking ? null : onPresentZap())}
-                >
-                  <FlashOnIcon style={{ color: themeColor.grey[400] }} />
-                </IconButton> */}
-                <StyledActionSpacer />
-                <IconButton
-                  disabled={bank.closedForStaking}
-                  onClick={() => (bank.closedForStaking ? null : onPresentDeposit())}
-                >
-                  <AddIcon />
-                </IconButton>
-              </>
-            )}
-          </StyledCardActions>
-        </StyledCardContentInner>
-      </CardContent>
-    </Card>
-  );
+    return (
+        <Card style={{ color: 'white', boxShadow: 'none !important' }}>
+            <CardContent>
+                <StyledCardContentInner>
+                    <StyledCardHeader>
+                        <CardIcon>
+                            <TokenSymbol symbol={bank.depositToken.symbol} size={54} />
+                        </CardIcon>
+                        <Value value={getDisplayBalance(stakedBalance, bank.depositToken.decimal)} />
+                        <Label text={`≈ $${earnedInDollars}`} />
+                        <Label text={`${bank.depositTokenName} Staked`} />
+                    </StyledCardHeader>
+                    <StyledCardActions>
+                        {approveStatus !== ApprovalState.APPROVED ? (
+                            <Button
+                                disabled={
+                                    bank.closedForStaking ||
+                                    approveStatus === ApprovalState.PENDING ||
+                                    approveStatus === ApprovalState.UNKNOWN
+                                }
+                                onClick={approve}
+                                color="primary"
+                                variant="outlined"
+                                style={{ backgroundColor: '#8000ff', color: 'white', marginTop: '20px' }}
+                            >
+                                {`Approve ${bank.depositTokenName}`}
+                            </Button>
+                        ) : (
+                            <>
+                                <IconButton onClick={onPresentWithdraw}>
+                                    <RemoveIcon />
+                                </IconButton>
+                                <StyledActionSpacer />
+                                {/* <IconButton disabled={bank.closedForStaking || bank.depositTokenName === 'MRY-FTM-LP'}
+                                    onClick={() => (bank.closedForStaking ? null : onPresentZap())}
+                                >  <FlashOnIcon style={{ color: themeColor.grey[400] }} />
+                                </IconButton> */}
+                                <StyledActionSpacer />
+                                <IconButton
+                                    disabled={bank.closedForStaking}
+                                    onClick={() => (bank.closedForStaking ? null : onPresentDeposit())}
+                                > <AddIcon />
+                                </IconButton>
+                            </>
+                        )}
+                    </StyledCardActions>
+                </StyledCardContentInner>
+            </CardContent>
+        </Card>
+    );
 };
 
 const StyledCardHeader = styled.div`

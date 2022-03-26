@@ -52,11 +52,8 @@ const useStyles = makeStyles((theme) => ({
 const Home = () => {
   const classes = useStyles();
   const TVL = useTotalValueLocked();
-  const tombFtmLpStats = useLpStats('TOMB-FTM-LP');
-  const tShareFtmLpStats = useLpStats('TSHARE-FTM-LP');
-  const tShare3ombLpStats = useLpStats('3SHARES-3OMB LP');
-  const TwoombTombLpStats = useLpStats('2OMB-TOMB LP');
-  const ThreeombTombLpStats = useLpStats('3OMB-TOMB LP');
+  const tombFtmLpStats = useLpStats('MERCURY-FTM LP');
+  const tShareFtmLpStats = useLpStats('XSHARE-FTM LP');
   const tombStats = useTombStats();
   const tShareStats = usetShareStats();
   const tBondStats = useBondStats();
@@ -80,40 +77,20 @@ const Home = () => {
 
   const tombLPStats = useMemo(() => (tombFtmLpStats ? tombFtmLpStats : null), [tombFtmLpStats]);
   const tshareFTM_LPStats = useMemo(() => (tShareFtmLpStats ? tShareFtmLpStats : null), [tShareFtmLpStats]);
-  const tshare3ombLPStats = useMemo(() => (tShare3ombLpStats ? tShare3ombLpStats : null), [tShare3ombLpStats]);
-  const twoombTombLpStats = useMemo(() => (TwoombTombLpStats ? TwoombTombLpStats : null), [TwoombTombLpStats]);
-  const threeombTombLpStats = useMemo(() => (ThreeombTombLpStats ? ThreeombTombLpStats : null), [ThreeombTombLpStats]);
-  const tombPriceInDollars = useMemo(
-    () => (tombStats ? Number(tombStats.priceInDollars).toFixed(2) : null),
-    [tombStats],
-  );
+
+  const tombPriceInDollars = useMemo(() => (tombStats ? Number(tombStats.priceInDollars).toFixed(2) : null),[tombStats],);
   const tombPriceInFTM = useMemo(() => (tombStats ? Number(tombStats.tokenInFtm).toFixed(4) : null), [tombStats]);
   const tombCirculatingSupply = useMemo(() => (tombStats ? String(tombStats.circulatingSupply) : null), [tombStats]);
   const tombTotalSupply = useMemo(() => (tombStats ? String(tombStats.totalSupply) : null), [tombStats]);
 
-  const tSharePriceInDollars = useMemo(
-    () => (tShareStats ? Number(tShareStats.priceInDollars).toFixed(2) : null),
-    [tShareStats],
-  );
-  const tSharePriceInFTM = useMemo(
-    () => (tShareStats ? Number(tShareStats.tokenInFtm).toFixed(4) : null),
-    [tShareStats],
-  );
-  const tShareCirculatingSupply = useMemo(
-    () => (tShareStats ? String(tShareStats.circulatingSupply) : null),
-    [tShareStats],
-  );
+  const tSharePriceInDollars = useMemo( () => (tShareStats ? Number(tShareStats.priceInDollars).toFixed(2) : null), [tShareStats],);
+  const tSharePriceInFTM = useMemo( () => (tShareStats ? Number(tShareStats.tokenInFtm).toFixed(4) : null),[tShareStats],);
+  const tShareCirculatingSupply = useMemo(() => (tShareStats ? String(tShareStats.circulatingSupply) : null),[tShareStats],);
   const tShareTotalSupply = useMemo(() => (tShareStats ? String(tShareStats.totalSupply) : null), [tShareStats]);
 
-  const tBondPriceInDollars = useMemo(
-    () => (tBondStats ? Number(tBondStats.priceInDollars).toFixed(2) : null),
-    [tBondStats],
-  );
+  const tBondPriceInDollars = useMemo(() => (tBondStats ? Number(tBondStats.priceInDollars).toFixed(2) : null),[tBondStats],);
   const tBondPriceInFTM = useMemo(() => (tBondStats ? Number(tBondStats.tokenInFtm).toFixed(4) : null), [tBondStats]);
-  const tBondCirculatingSupply = useMemo(
-    () => (tBondStats ? String(tBondStats.circulatingSupply) : null),
-    [tBondStats],
-  );
+  const tBondCirculatingSupply = useMemo(() => (tBondStats ? String(tBondStats.circulatingSupply) : null),[tBondStats],);
   const tBondTotalSupply = useMemo(() => (tBondStats ? String(tBondStats.totalSupply) : null), [tBondStats]);
 
   const tombLpZap = useZap({ depositTokenName: 'TOMB-FTM-LP' });
@@ -211,13 +188,13 @@ const Home = () => {
               <Button  href="/boardroom"  className={classes.button} variant="outlined" style={{marginRight: "10px", backgroundColor: "#8000ff"}}>
                 STAKE NOW
               </Button>
-              <Button   href="/masonry" className={classes.button} variant="outlined" style={{ marginRight: '10px', backgroundColor: 'white', color: 'black' }}>
+              <Button   href="/farms" className={classes.button} variant="outlined" style={{ marginRight: '10px', backgroundColor: 'white', color: 'black' }}>
                 FARM Now
               </Button>
-              <Button href="/cemetery"  className={classes.button} variant="outlined" style={{ marginRight: '10px', backgroundColor:'#8000ff' }}>
+              <Button target="_blank" href="https://spookyswap.finance/swap?outputCurrency=0xf5BBb9148090ed61500430A2c607Cd1688E92dC2"  className={classes.button} variant="outlined" style={{ marginRight: '10px', backgroundColor:'#8000ff' }}>
                 BUY MERCURY
               </Button>
-              <Button href="/cemetery"  className={classes.button} variant="outlined" style={{ marginRight: '10px' , backgroundColor: 'white', color: 'black'}}>
+              <Button target="_blank" href="https://spookyswap.finance/swap?outputCurrency=0xB339857F6f1b100840DBe395C8503F7b9d79C39B"  className={classes.button} variant="outlined" style={{ marginRight: '10px' , backgroundColor: 'white', color: 'black'}}>
                 BUY XSHARE
               </Button>
               {/* <Button target="_blank" href="https://spookyswap.finance/swap?outputCurrency=0x14def7584a6c52f470ca4f4b9671056b22f4ffde"

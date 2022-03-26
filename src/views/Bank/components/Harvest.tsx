@@ -5,6 +5,7 @@ import { Button, Card, CardContent } from '@material-ui/core';
 // import Button from '../../../components/Button';
 // import Card from '../../../components/Card';
 // import CardContent from '../../../components/CardContent';
+
 import CardIcon from '../../../components/CardIcon';
 import Label from '../../../components/Label';
 import Value from '../../../components/Value';
@@ -28,9 +29,11 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
   const tombStats = useTombStats();
   const tShareStats = useShareStats();
 
-  const tokenName = bank.earnTokenName === 'MERCURY-FTM LPvg' ? 'MERCURY-FTM LP' : 'XSHARE';
+  const tokenName = bank.earnTokenName === 'XSHARE' ? 'XSHARE' : 'MERCURY';
   // const tokenEarn = bank.earnTokenName === '3OMB' ? 'TOMB' : 'TSHARE';
-  const tokenStats = bank.earnTokenName === '3SHARES' ? tShareStats : tombStats;
+  // const tokenStats = bank.earnTokenName === '3SHARES' ? tShareStats : tombStats;
+  const tokenStats = bank.earnTokenName === 'XSHARE' ? tShareStats : tombStats;
+
   const tokenPriceInDollars = useMemo(
     () => (tokenStats ? Number(tokenStats.priceInDollars).toFixed(2) : null),
     [tokenStats],

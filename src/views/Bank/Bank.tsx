@@ -21,124 +21,124 @@ import useTombFinance from '../../hooks/useTombFinance';
 
 import Label from '../../components/Label';
 const useStyles = makeStyles((theme) => ({
-  gridItem: {
-    height: '100%',
-    [theme.breakpoints.up('md')]: {
-      height: '90px',
+    gridItem: {
+        height: '100%',
+        [theme.breakpoints.up('md')]: {
+            height: '90px',
+        },
     },
-  },
 }));
 
 const Bank: React.FC = () => {
-  useEffect(() => window.scrollTo(0, 0));
-  const classes = useStyles();
-  const { bankId } = useParams();
-  const bank = useBank(bankId);
+    useEffect(() => window.scrollTo(0, 0));
+    const classes = useStyles();
+    const {bankId} = useParams();
+    const bank = useBank(bankId);
 
-  const { account } = useWallet();
-  const { onRedeem } = useRedeem(bank);
-  const statsOnPool = useStatsForPool(bank);
-  return account && bank ? (
-    <>
-      <PageHeader
-        icon="🏦"
-        subtitle={`Deposit ${bank?.depositTokenName} and earn ${bank?.earnTokenName}`}
-        title={bank?.name}
-      />
-      <Box>
-        <Grid container justify="center" spacing={3} style={{ marginBottom: '50px' }}>
-          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-            <Card className={classes.gridItem}>
-              <CardContent style={{ background: 'black', color: 'white', border: "1px solid var(--black)", textAlign: 'center', boxShadow: 'none !important' }}>
-                <Typography>APR</Typography>
-                <Typography>{bank.closedForStaking ? '0.00' : statsOnPool?.yearlyAPR}%</Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-            <Card className={classes.gridItem}>
-              <CardContent style={{ background: 'black', color: 'white', border: "1px solid var(--black)", textAlign: 'center' }}>
-                <Typography>Daily APR</Typography>
-                <Typography>{bank.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-          <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
-            <Card className={classes.gridItem}>
-              <CardContent style={{ background: 'black', color: 'white', border: "1px solid var(--black)", textAlign: 'center' }}>
-                <Typography>TVL</Typography>
-                <Typography>${statsOnPool?.TVL}</Typography>
-              </CardContent>
-            </Card>
-          </Grid>
-        </Grid>
-      </Box>
-      <Box mt={5}>
-        <StyledBank>
-      {(bank.depositTokenName.includes('3OMB-TOMB') || bank.depositTokenName.includes('2OMB-TOMB')) &&
-      <Alert variant="filled" severity="warning">
-        Rewards for this pool are currently turned off.
-      </Alert>}
-          <StyledCardsWrapper>
-            <StyledCardWrapper>
-              <Harvest bank={bank} />
-            </StyledCardWrapper>
-            <Spacer />
-            <StyledCardWrapper>{<Stake bank={bank} />}</StyledCardWrapper>
-          </StyledCardsWrapper>
-          <Spacer size="lg" />
-          {/* {bank.depositTokenName.includes('LP') && <LPTokenHelpText bank={bank} />} */}
-          <Spacer size="lg" />
-          <div style={{textAlign: 'center'}}>
-         
-          <Label text={` 👻 Provide liquidity for MERCURY-FTM pair now on SpookySwap 👻`} />
-          <Spacer size="lg" />
-            <Button onClick={onRedeem} color="primary" variant="outlined" style={{color: 'white', backgroundColor: "#8000ff"}}>
-              Claim & Withdraw
-            </Button>
-          </div>
-          <Spacer size="lg" />
-        </StyledBank>
-      </Box>
-    </>
-  ) : !bank ? (
-    <BankNotFound />
-  ) : (
-    <UnlockWallet />
-  );
+    const { account } = useWallet();
+    const { onRedeem } = useRedeem(bank);
+    const statsOnPool = useStatsForPool(bank);
+    return account && bank ? (
+        <>
+            <PageHeader
+                icon="🏦"
+                subtitle={`Deposit ${bank?.depositTokenName} and earn ${bank?.earnTokenName}`}
+                title={bank?.name}
+            />
+            <Box>
+                <Grid container justify="center" spacing={3} style={{ marginBottom: '50px' }}>
+                    <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+                        <Card className={classes.gridItem}>
+                            <CardContent style={{ background: 'black', color: 'white', border: "1px solid var(--black)", textAlign: 'center', boxShadow: 'none !important' }}>
+                                <Typography>APR</Typography>
+                                <Typography>{bank.closedForStaking ? '0.00' : statsOnPool?.yearlyAPR}%</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+                        <Card className={classes.gridItem}>
+                            <CardContent style={{ background: 'black', color: 'white', border: "1px solid var(--black)", textAlign: 'center' }}>
+                                <Typography>Daily APR</Typography>
+                                <Typography>{bank.closedForStaking ? '0.00' : statsOnPool?.dailyAPR}%</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                    <Grid item xs={12} md={2} lg={2} className={classes.gridItem}>
+                        <Card className={classes.gridItem}>
+                            <CardContent style={{ background: 'black', color: 'white', border: "1px solid var(--black)", textAlign: 'center' }}>
+                                <Typography>TVL</Typography>
+                                <Typography>${statsOnPool?.TVL}</Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>
+                </Grid>
+            </Box>
+            <Box mt={5}>
+                <StyledBank>
+                    {(bank.depositTokenName.includes('3OMB-TOMB') || bank.depositTokenName.includes('2OMB-TOMB')) &&
+                        <Alert variant="filled" severity="warning">
+                            Rewards for this pool are currently turned off.
+                        </Alert>}
+                    <StyledCardsWrapper>
+                        <StyledCardWrapper>
+                            <Harvest bank={bank} />
+                        </StyledCardWrapper>
+                        <Spacer />
+                        <StyledCardWrapper>{<Stake bank={bank} />}</StyledCardWrapper>
+                    </StyledCardsWrapper>
+                    <Spacer size="lg" />
+                    {bank.depositTokenName.includes('LP') && <LPTokenHelpText bank={bank} />}
+                    <Spacer size="lg" />
+                    <div style={{ textAlign: 'center' }}>
+
+                        {/* <Label text={` 👻 Provide liquidity for MERCURY-FTM pair now on SpookySwap 👻`} /> */}
+                        <Spacer size="lg" />
+                        <Button onClick={onRedeem} color="primary" variant="outlined" style={{ color: 'white', backgroundColor: "#8000ff" }}>
+                            Claim & Withdraw
+                        </Button>
+                    </div>
+                    <Spacer size="lg" />
+                </StyledBank>
+            </Box>
+        </>
+    ) : !bank ? (
+        <BankNotFound />
+    ) : (
+        <UnlockWallet />
+    );
 };
 
 const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
-  const tombFinance = useTombFinance();
-  const tombAddr = tombFinance.TOMB.address;
-  const tshareAddr = tombFinance.TSHARE.address;
+    const tombFinance = useTombFinance();
+    const tombAddr = tombFinance.TOMB.address;
+    const tshareAddr = tombFinance.TSHARE.address;
 
-  let pairName: string;
-  let uniswapUrl: string;
-  if (bank.depositTokenName.includes('3OMB')) {
-    pairName = '3OMB-WFTM pair';
-    uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tombAddr;
-  } else {
-    pairName = '3SHARE-WFTM pair';
-    uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tshareAddr;
-  }
-  return (
-    <Card>
-      <CardContent>
-        <StyledLink href={uniswapUrl} target="_blank">
-          {`👻 Provide liquidity for ${pairName} now on SpookySwap 👻`}
-        </StyledLink>
-      </CardContent>
-    </Card>
-  );
+    let pairName: string;
+    let uniswapUrl: string;
+    if (bank.depositTokenName.includes('MRY')) {
+        pairName = 'MRY-WFTM pair';
+        uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tombAddr;
+    } else {
+        pairName = 'MRY-WFTM pair';
+        uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tshareAddr;
+    }
+    return (
+        <Card>
+            <CardContent>
+                <StyledLink href={uniswapUrl} style={{color: 'white'}} target="_blank">
+                    {`👻 Provide liquidity for ${pairName} now on SpookySwap 👻`}
+                </StyledLink>
+            </CardContent>
+        </Card>
+    );
 };
 
 const BankNotFound = () => {
-  return (
-    <Center>
-      <PageHeader icon="🏚" title="Not Found" subtitle="You've hit a bank just robbed by unicorns." />
-    </Center>
-  );
+    return (
+        <Center>
+            <PageHeader icon="🏚" title="Not Found" subtitle="You've hit a bank just robbed by unicorns." />
+        </Center>
+    );
 };
 
 const StyledBank = styled.div`

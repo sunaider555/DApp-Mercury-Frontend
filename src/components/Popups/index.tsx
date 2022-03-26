@@ -35,7 +35,7 @@ const FixedPopupColumn = styled.div`
   right: 3rem;
   max-width: 355px !important;
   width: 100%;
-  z-index: 2;
+  z-index: 100000;
 
   @media (max-width: 768px) {
     display: none;

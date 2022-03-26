@@ -12,13 +12,14 @@ const useCurrentEpoch = () => {
     async function fetchCurrentEpoch () {
       try {
         setCurrentEpoch(await tombFinance.getCurrentEpoch());
+        console.log("BB_>>>");
       } catch(err) {
         console.error(err);
       }
     }
     fetchCurrentEpoch();
   }, [setCurrentEpoch, tombFinance, slowRefresh]);
-
+  console.log("bb_useCurrentEpoch.ts", currentEpoch);
   return currentEpoch;
 };
 
