@@ -1,23 +1,23 @@
 {
   "BondOracle": {
-    "address": "0x1d50CB4c930B33AEB8F279B37c21B6FbE970C95f",
+    "address": "0x73321206dDBA7C27A6425D89CF8e327F3ebedB5c",
     "abi": [
       {
         "inputs": [
           {
-            "internalType": "contract IUniswapV2Pair",
-            "name": "_pair",
+            "internalType": "address",
+            "name": "_mry",
             "type": "address"
           },
           {
-            "internalType": "uint256",
-            "name": "_period",
-            "type": "uint256"
+            "internalType": "address",
+            "name": "_ftm",
+            "type": "address"
           },
           {
-            "internalType": "uint256",
-            "name": "_startTime",
-            "type": "uint256"
+            "internalType": "address",
+            "name": "_uniRouter",
+            "type": "address"
           }
         ],
         "stateMutability": "nonpayable",
@@ -62,111 +62,143 @@
         "type": "event"
       },
       {
-        "anonymous": false,
         "inputs": [
           {
-            "indexed": false,
             "internalType": "uint256",
-            "name": "price0CumulativeLast",
+            "name": "amtMry",
             "type": "uint256"
           },
           {
-            "indexed": false,
             "internalType": "uint256",
-            "name": "price1CumulativeLast",
+            "name": "amtMryMin",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amtFtmMin",
             "type": "uint256"
           }
         ],
-        "name": "Updated",
-        "type": "event"
-      },
-      {
-        "inputs": [],
-        "name": "blockTimestampLast",
+        "name": "addLiquidityETHTaxFree",
         "outputs": [
           {
-            "internalType": "uint32",
+            "internalType": "uint256",
             "name": "",
-            "type": "uint32"
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
-        "stateMutability": "view",
+        "stateMutability": "payable",
         "type": "function"
       },
       {
         "inputs": [
           {
             "internalType": "address",
-            "name": "_token",
+            "name": "token",
             "type": "address"
           },
           {
             "internalType": "uint256",
-            "name": "_amountIn",
+            "name": "amtMry",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amtToken",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amtMryMin",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "amtTokenMin",
             "type": "uint256"
           }
         ],
-        "name": "consult",
+        "name": "addLiquidityTaxFree",
         "outputs": [
           {
-            "internalType": "uint144",
-            "name": "amountOut",
-            "type": "uint144"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "getCurrentEpoch",
-        "outputs": [
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
+          },
           {
             "internalType": "uint256",
             "name": "",
             "type": "uint256"
           }
         ],
-        "stateMutability": "view",
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
         "inputs": [],
-        "name": "getLastEpochTime",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
+        "name": "disableAutoCalculateTax",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
         "inputs": [],
-        "name": "getPeriod",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
+        "name": "enableAutoCalculateTax",
+        "outputs": [],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "getStartTime",
-        "outputs": [
+        "inputs": [
           {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
           }
         ],
-        "stateMutability": "view",
+        "name": "excludeAddressFromTax",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+          }
+        ],
+        "name": "includeAddressInTax",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
         "type": "function"
       },
       {
@@ -184,12 +216,12 @@
       },
       {
         "inputs": [],
-        "name": "nextEpochPoint",
+        "name": "mry",
         "outputs": [
           {
-            "internalType": "uint256",
+            "internalType": "address",
             "name": "",
-            "type": "uint256"
+            "type": "address"
           }
         ],
         "stateMutability": "view",
@@ -223,71 +255,6 @@
       },
       {
         "inputs": [],
-        "name": "pair",
-        "outputs": [
-          {
-            "internalType": "contract IUniswapV2Pair",
-            "name": "",
-            "type": "address"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "price0Average",
-        "outputs": [
-          {
-            "internalType": "uint224",
-            "name": "_x",
-            "type": "uint224"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "price0CumulativeLast",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "price1Average",
-        "outputs": [
-          {
-            "internalType": "uint224",
-            "name": "_x",
-            "type": "uint224"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
-        "name": "price1CumulativeLast",
-        "outputs": [
-          {
-            "internalType": "uint256",
-            "name": "",
-            "type": "uint256"
-          }
-        ],
-        "stateMutability": "view",
-        "type": "function"
-      },
-      {
-        "inputs": [],
         "name": "renounceOwnership",
         "outputs": [],
         "stateMutability": "nonpayable",
@@ -297,11 +264,42 @@
         "inputs": [
           {
             "internalType": "uint256",
-            "name": "_epoch",
+            "name": "_burnThreshold",
             "type": "uint256"
           }
         ],
-        "name": "setEpoch",
+        "name": "setBurnThreshold",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_taxCollectorAddress",
+            "type": "address"
+          }
+        ],
+        "name": "setTaxCollectorAddress",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_address",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "_excluded",
+            "type": "bool"
+          }
+        ],
+        "name": "setTaxExclusionForAddress",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
@@ -310,36 +308,126 @@
         "inputs": [
           {
             "internalType": "uint256",
-            "name": "_period",
+            "name": "_taxRate",
             "type": "uint256"
           }
         ],
-        "name": "setPeriod",
+        "name": "setTaxRate",
         "outputs": [],
         "stateMutability": "nonpayable",
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "token0",
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setTaxTiersRate",
         "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "uint8",
+            "name": "_index",
+            "type": "uint8"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_value",
+            "type": "uint256"
+          }
+        ],
+        "name": "setTaxTiersTwap",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
+          }
+        ],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
+          {
+            "internalType": "address",
+            "name": "_mryOracle",
+            "type": "address"
+          }
+        ],
+        "name": "setTaxableMryOracle",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [
           {
             "internalType": "address",
             "name": "",
             "type": "address"
+          }
+        ],
+        "name": "taxExclusionEnabled",
+        "outputs": [
+          {
+            "internalType": "bool",
+            "name": "",
+            "type": "bool"
           }
         ],
         "stateMutability": "view",
         "type": "function"
       },
       {
-        "inputs": [],
-        "name": "token1",
-        "outputs": [
+        "inputs": [
           {
             "internalType": "address",
-            "name": "",
+            "name": "_sender",
             "type": "address"
+          },
+          {
+            "internalType": "address",
+            "name": "_recipient",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "_amt",
+            "type": "uint256"
+          }
+        ],
+        "name": "taxFreeTransferFrom",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "taxRate",
+        "outputs": [
+          {
+            "internalType": "uint256",
+            "name": "",
+            "type": "uint256"
           }
         ],
         "stateMutability": "view",
@@ -375,21 +463,23 @@
         "inputs": [
           {
             "internalType": "address",
-            "name": "_token",
+            "name": "_newTaxOffice",
             "type": "address"
-          },
-          {
-            "internalType": "uint256",
-            "name": "_amountIn",
-            "type": "uint256"
           }
         ],
-        "name": "twap",
+        "name": "transferTaxOffice",
+        "outputs": [],
+        "stateMutability": "nonpayable",
+        "type": "function"
+      },
+      {
+        "inputs": [],
+        "name": "uniRouter",
         "outputs": [
           {
-            "internalType": "uint144",
-            "name": "_amountOut",
-            "type": "uint144"
+            "internalType": "address",
+            "name": "",
+            "type": "address"
           }
         ],
         "stateMutability": "view",
@@ -397,15 +487,22 @@
       },
       {
         "inputs": [],
-        "name": "update",
-        "outputs": [],
-        "stateMutability": "nonpayable",
+        "name": "wftm",
+        "outputs": [
+          {
+            "internalType": "address",
+            "name": "",
+            "type": "address"
+          }
+        ],
+        "stateMutability": "view",
         "type": "function"
       }
     ]
   },
-  "SeigniorageOracle": {
-    "address": "0x07382ca7c0E1f4552A0967e5DACe30bB12C4E2dD",
+
+  "SeigniorageOracle": { 
+    "address": "0x7217D95fC59623701431EC4cd56eadA0a50439AB",
     "abi": [
       {
         "inputs": [
@@ -810,7 +907,7 @@
     ]
   },
   "mry": {
-    "address": "0xf5BBb9148090ed61500430A2c607Cd1688E92dC2",
+    "address": "0x7A8e1267DBB4f5f78D1a795e38604A8E37A28DF5",
     "abi": [
       {
         "inputs": [
@@ -1698,7 +1795,7 @@
     ]
   },
   "xShare": {
-    "address": "0xB339857F6f1b100840DBe395C8503F7b9d79C39B",
+    "address": "0x5a1c848382a734b39F54bFC6a376cF581030ccD5",
     "abi": [
       {
         "inputs": [
@@ -2316,7 +2413,7 @@
     ]
   },
   "xBond": {
-    "address": "0x776BAc04697270c38ba2442fF6E8c5342f1933c4",
+    "address": "0x1F3B0C73d348f3c6762CbbCfe9a52e1cFa96a876",
     "abi": [
       {
         "inputs": [],
@@ -2761,7 +2858,7 @@
     ]
   },
   "Treasury": {
-    "address": "0x1135C78F7f157b0BA8CE8e236eB72431eFCD649a",
+    "address": "0x438FAB186911eDa3b340e260DFD26448861f7162",
     "abi": [
       {
         "anonymous": false,
@@ -3266,11 +3363,6 @@
           {
             "internalType": "address",
             "name": "_masonry",
-            "type": "address"
-          },
-          {
-            "internalType": "address",
-            "name": "_genesisPool",
             "type": "address"
           },
           {
@@ -3985,7 +4077,7 @@
     ]
   },
   "Masonry": {
-    "address": "0x7d0cCe78E425750b1a638B4331fb0c29f4559029",
+    "address": "0x3a22E957d70091F9F559F7390f972519C61fC4f9",
     "abi": [
       {
         "anonymous": false,
@@ -4537,7 +4629,7 @@
     ]
   },
   "MryGenesisRewardPool": {
-    "address": "0xF2572ddB84eA9887AB3F671C5830d73958A19518",
+    "address": "0x889C377E78E160B53D116Cc1745229F2cF36914C",
     "abi": [
       {
         "inputs": [
@@ -5064,7 +5156,7 @@
     ]
   },
   "FtmMryRewardPool": {
-    "address": "0xF2572ddB84eA9887AB3F671C5830d73958A19518",
+    "address": "0x889C377E78E160B53D116Cc1745229F2cF36914C",
     "abi": [
       {
         "inputs": [
@@ -5591,7 +5683,7 @@
     ]
   },
   "UsdcMryRewardPool": {
-    "address": "0xF2572ddB84eA9887AB3F671C5830d73958A19518",
+    "address": "0x889C377E78E160B53D116Cc1745229F2cF36914C",
     "abi": [
       {
         "inputs": [
@@ -6118,10 +6210,8 @@
     ]
   },
 
-
-
   "MryRewardPool": {
-    "address": "0x7013816B7cD7e7222fF17F264a3cfF1aF8030b0e",
+    "address": "0x8c4Ff3c69Ebb34CA1066aF86B418d413a068b871",
     "abi": [
       {
         "inputs": [
@@ -6612,10 +6702,8 @@
     ]
   },
 
-
-
   "ShareRewardPool": {
-    "address": "0x4775C3c9438b01a21206b69cfb08151521F87723",
+    "address": "0x2Ef2e052912fba4D003a096f26Dea1101e75b4AF",
     "abi": [
       {
         "inputs": [
@@ -7101,7 +7189,7 @@
     ]
   },
   "MryFtmLpShareRewardPool": {
-    "address": "0x4775C3c9438b01a21206b69cfb08151521F87723",
+    "address": "0x2Ef2e052912fba4D003a096f26Dea1101e75b4AF",
     "abi": [
       {
         "inputs": [
@@ -7587,7 +7675,7 @@
     ]
   },
   "ShareFtmLpShareRewardPool": {
-    "address": "0x4775C3c9438b01a21206b69cfb08151521F87723",
+    "address": "0x2Ef2e052912fba4D003a096f26Dea1101e75b4AF",
     "abi": [
       {
         "inputs": [
@@ -8073,9 +8161,6 @@
     ]
   },
 
-
-
-
   "zapper": {
     "address": "0x8bb1fe7a50082623b372d857b4d07911c786a3e9",
     "abi": [
@@ -8544,7 +8629,7 @@
     ]
   },
   "TaxOffice": {
-    "address": "0x25669f0307d26f3e2f5918F6665b1E20036535C0",
+    "address": "0x86164D8852f69A7d9fF654d795FE4325eb320b85",
     "abi": [
       {
         "inputs": [
@@ -10020,9 +10105,6 @@
       }
     ]
   },
-
-
-
   
   "TwoshareFtmLPTShareRewardPool": {
     "address": "0x909B22822Debc6796388CB5fda77D978bfDa5019",

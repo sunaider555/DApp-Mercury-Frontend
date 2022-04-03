@@ -1448,9 +1448,9 @@ const ERC20ABI = [
   ]
 const web3 = new Web3("https://rpc.ftm.tools")
 // const RebateTreasury = new web3.eth.Contract(RebateTreasuryABI, "0x8f555E00ea0FAc871b3Aa70C015915dB094E7f88")
-const RebateTreasury = new web3.eth.Contract(RebateTreasuryABI, "0x5B58339414730796bc88638B0D9A1c6C4104743E") 
-const Threeomb = new web3.eth.Contract(ERC20ABI, "0x14DEf7584A6c52f470Ca4F4b9671056b22f4FfDE")
-const Mry = new web3.eth.Contract(ERC20ABI, "0xf5BBb9148090ed61500430A2c607Cd1688E92dC2")
+const RebateTreasury = new web3.eth.Contract(RebateTreasuryABI, "0x50db40aD106573970a5151076899C0DC91F03340") 
+// const Threeomb = new web3.eth.Contract(ERC20ABI, "0x14DEf7584A6c52f470Ca4F4b9671056b22f4FfDE")
+const Mry = new web3.eth.Contract(ERC20ABI, "0x7A8e1267DBB4f5f78D1a795e38604A8E37A28DF5")
 
 const assetList = [
     "0xc54A1684fD1bef1f077a336E6be4Bd9a3096a6Ca", // 2shares
@@ -1477,8 +1477,7 @@ function useRebateTreasury() {
         price: 0
     })))
     
-    console.log("BB_useRebateTreasury_tombPrice:", tombPrice);
-    async function update() {console.log("BB_useRebate_update function is called");
+    async function update() {
         const [
             tombPrice,
             tombBalance,
@@ -1496,7 +1495,7 @@ function useRebateTreasury() {
             Promise.all(assetList.map(asset => RebateTreasury.methods.assets(asset).call())),
             Promise.all(assetList.map(asset => RebateTreasury.methods.getTokenPrice(asset).call()))
         ])
-        console.log("BB_useRebateTreasury_tombPrice:", tombPrice);
+        console.log("BB_useRebateTreasury_mryPrice:", tombPrice);
         setTombPrice(+web3.utils.fromWei(tombPrice))
         setTombAvailable(+web3.utils.fromWei(tombBalance) - +web3.utils.fromWei(vestedTomb))
         setBondPremium(+bondPremium / 10000)

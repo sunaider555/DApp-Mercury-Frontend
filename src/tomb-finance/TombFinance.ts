@@ -218,7 +218,7 @@ export class TombFinance {
 
   async getBondsPurchasable(): Promise<BigNumber> {
     const { Treasury } = this.contracts;
-    return Treasury.getBurnableTombLeft();
+    return Treasury.getBurnableMryLeft();
   }
 
   /**
@@ -364,7 +364,7 @@ export class TombFinance {
    */
   async buyBonds(amount: string | number): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    const treasuryTombPrice = await Treasury.getTombPrice();
+    const treasuryTombPrice = await Treasury.getMryPrice();
     return await Treasury.buyBonds(decimalToBalance(amount), treasuryTombPrice);
   }
 
@@ -374,7 +374,7 @@ export class TombFinance {
    */
   async redeemBonds(amount: string): Promise<TransactionResponse> {
     const { Treasury } = this.contracts;
-    const priceForTomb = await Treasury.getTombPrice();
+    const priceForTomb = await Treasury.getMryPrice();
     return await Treasury.redeemBonds(decimalToBalance(amount), priceForTomb);
   }
 
@@ -515,7 +515,10 @@ export class TombFinance {
    * @returns {string} Transaction hash
    */
   async stake(poolName: ContractName, poolId: Number, amount: BigNumber): Promise<TransactionResponse> {
-    console.log(this.contracts[poolName], poolId, amount);
+    console.log("=============================",this.contracts[poolName], poolId, amount);
+    console.log("BB_amount", amount);
+    console.log("BB_amountpoolName", poolName);
+
     const pool = this.contracts[poolName];
     return await pool.deposit(poolId, amount);
   }
@@ -742,6 +745,7 @@ export class TombFinance {
   async getTreasuryNextAllocationTime(): Promise<AllocationTime> {
     const { Treasury } = this.contracts;
     const nextEpochTimestamp: BigNumber = await Treasury.nextEpochPoint();
+    console.log("bb_nextEpochTimeStamp", nextEpochTimestamp);
     const nextAllocation = new Date(nextEpochTimestamp.mul(1000).toNumber());
     const prevAllocation = new Date(Date.now());
 
@@ -820,15 +824,15 @@ export class TombFinance {
     if (ethereum && ethereum.networkVersion === config.chainId.toString()) {
       let asset;
       let assetUrl;
-      if (assetName === 'TOMB') {
+      if (assetName === 'MRY') {
         asset = this.TOMB;
-        assetUrl = 'https://tomb.finance/presskit/tomb_icon_noBG.png';
+        assetUrl = 'https://raw.githubusercontent.com/sunaider555/DApp-Mercury-Frontend/master/src/assets/img/mercury.png';
       } else if (assetName === 'TSHARE') {
         asset = this.TSHARE;
-        assetUrl = 'https://tomb.finance/presskit/tshare_icon_noBG.png';
+        assetUrl = 'https://raw.githubusercontent.com/sunaider555/DApp-Mercury-Frontend/master/src/assets/img/xshare.png';
       } else if (assetName === 'TBOND') {
         asset = this.TBOND;
-        assetUrl = 'https://tomb.finance/presskit/tbond_icon_noBG.png';
+        assetUrl = 'https://raw.githubusercontent.com/sunaider555/DApp-Mercury-Frontend/master/src/assets/img/xbond.png';
       }
       await ethereum.request({
         method: 'wallet_watchAsset',

@@ -10,7 +10,9 @@ const useStake = (bank: Bank) => {
 
   const handleStake = useCallback(
     (amount: string) => {
+      console.log("BB_cemetry_amount_string", amount);
       const amountBn = parseUnits(amount, bank.depositToken.decimal);
+      console.log("BB_cemetry_amount_parsed", amountBn);
       handleTransactionReceipt(
         tombFinance.stake(bank.contract, bank.poolId, amountBn),
         `Stake ${amount} ${bank.depositTokenName} to ${bank.contract}`,

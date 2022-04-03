@@ -52,7 +52,7 @@ const Harvest: React.FC<HarvestProps> = ({ bank }) => {
             <Label text={`${tokenName} Earned`} />
           </StyledCardHeader>
           <StyledCardActions>
-            <Button onClick={onReward} disabled={earnings.eq(0)} color="primary" variant="outlined" style={{backgroundColor: '#cdcdcd', color: 'white'}}>
+            <Button onClick={onReward} disabled={earnings.eq(0)} color="primary" variant="outlined" style={{backgroundColor: 'rgb(128, 0, 255)', color: 'white'}}>
               Claim
             </Button>
           </StyledCardActions>

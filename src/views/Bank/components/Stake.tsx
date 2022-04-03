@@ -55,10 +55,12 @@ const Stake: React.FC<StakeProps> = ({ bank }) => {
     const { onWithdraw } = useWithdraw(bank);
 
     const [onPresentDeposit, onDismissDeposit] = useModal(
+        
         <DepositModal
             max={tokenBalance}
             decimals={bank.depositToken.decimal}
             onConfirm={(amount) => {
+                console.log("BB_cemetry_stake_amount", amount);
                 if (Number(amount) <= 0 || isNaN(Number(amount))) return;
                 onStake(amount);
                 onDismissDeposit();

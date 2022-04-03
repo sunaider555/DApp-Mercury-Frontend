@@ -68,11 +68,11 @@ const App: React.FC = () => {
             </Route>
             {/* <Route path="/sbs">
               <SBS />
-            </Route>
-            <Route path="/regulations">
+            </Route> */}
+            {/* <Route path="/regulations">
               <Regulations />
-            </Route>
-            <Route path="/liquidity">
+            </Route> */}
+            {/* <Route path="/liquidity">
               <Liquidity />
             </Route> */}
             <Route path="*">
@@ -96,7 +96,8 @@ const Providers: React.FC = ({ children }) => {
             walletlink: {
               url: config.defaultProvider,
               appName: 'Mercury Finance',
-              appLogoUrl: 'https://github.com/2omb/3omb-frontend/blob/8ab3b1f5ecc7d5dad5b856f160d6e7afb8357560/src/assets/img/2OMB-2SHARES.png',
+              // appLogoUrl: 'https://github.com/2omb/3omb-frontend/blob/8ab3b1f5ecc7d5dad5b856f160d6e7afb8357560/src/assets/img/2OMB-2SHARES.png',
+              appLogoUrl: 'https://github.com/sunaider555/DApp-Mercury-Frontend/blob/master/public/avatar.png',
             },
           }}
         >

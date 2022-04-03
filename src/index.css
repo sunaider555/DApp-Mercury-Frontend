@@ -102,6 +102,10 @@ footer .a:hover {
   background-color: var(--accent) !important;
 }
 
+.Mui-disabled {
+  background-color: #9f9d9d !important;
+}
+
 /* code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 } */

@@ -75,10 +75,10 @@ const Bank: React.FC = () => {
             </Box>
             <Box mt={5}>
                 <StyledBank>
-                    {(bank.depositTokenName.includes('3OMB-TOMB') || bank.depositTokenName.includes('2OMB-TOMB')) &&
+                    {/* {(bank.depositTokenName.includes('3OMB-TOMB') || bank.depositTokenName.includes('2OMB-TOMB')) &&
                         <Alert variant="filled" severity="warning">
                             Rewards for this pool are currently turned off.
-                        </Alert>}
+                        </Alert>} */}
                     <StyledCardsWrapper>
                         <StyledCardWrapper>
                             <Harvest bank={bank} />
@@ -115,11 +115,11 @@ const LPTokenHelpText: React.FC<{ bank: BankEntity }> = ({ bank }) => {
 
     let pairName: string;
     let uniswapUrl: string;
-    if (bank.depositTokenName.includes('MRY')) {
-        pairName = 'MRY-WFTM pair';
+    if (bank.depositTokenName.includes('MERCURY-FTM')) {
+        pairName = 'MERCURY-WFTM pair';
         uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tombAddr;
     } else {
-        pairName = 'MRY-WFTM pair';
+        pairName = 'XSHARE-WFTM pair';
         uniswapUrl = 'https://spookyswap.finance/add/FTM/' + tshareAddr;
     }
     return (
